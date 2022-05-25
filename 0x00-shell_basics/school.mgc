@@ -1,2 +1,2 @@
-0 string /cC SCHOOL
-!:mime School
+#!/bin/bash
+0 string /cC SCHOOL \n !:mime School
