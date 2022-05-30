@@ -1,2 +1,2 @@
 #!/bin/bash
-file . -type d -print0 | wc -l
+file . -mindepth 1 -type d -print | wc -l
