@@ -1,0 +1,2 @@
+#!/bin/bash
+ls -Ra1 | find -empty
