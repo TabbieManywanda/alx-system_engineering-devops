@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#Display words 10 times but different on 9th
+
+i=0
+while (( i<10 ))
+do
+	if (( i==9 ))
+	then
+		echo "Hi"
+	fi
+	echo "Best School"
+	(( i++ ))
+done
