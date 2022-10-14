@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#Displays numbers 1 through 20
+#with some words in between
+#using case statement
+
+i=1
+while (( i<=20 ))
+do
+	case $i in
+		5 )
+			echo "bad luck from China" ;;
+		10 )
+			echo "bad luck from Japan" ;;
+		18 )
+			echo "bad luck from Italy" ;;
+	esac
+	echo "$i"
+	(( i++ ))
+done
