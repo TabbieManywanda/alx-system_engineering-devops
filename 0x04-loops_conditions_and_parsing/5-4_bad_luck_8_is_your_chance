@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#Displays 10 lines of a similar sentence except
+#lines 4 and 8 that will be different using if...elif
+
+i=0
+while (( i<10 ))
+do
+	if (( i==3 ))
+	then
+		echo "bad luck"
+	elif (( i==7 ))
+	then
+		echo "good luck"
+	else
+		echo "Best School"
+	fi
+	(( i++ ))
+done
