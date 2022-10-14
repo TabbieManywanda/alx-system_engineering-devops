@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#Displaying the hours and minutes of a clock
+
+hr=0
+
+while (( hr<=12 ))
+do
+	echo "Hour: $hr"
+	min=1
+	while (( min<60 ))
+	do
+		echo "$min"
+		(( min++ ))
+	done
+	(( hr++ ))
+done
