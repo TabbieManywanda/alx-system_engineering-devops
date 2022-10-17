@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#Creates file and displays various lines of words
+
+echo "$$" > /var/run/myscript.pid
+trap "echo 'I hate the kill command'; rm /var/run/myscript.pid; exit" SIGTERM
+trap "rm /var/run/myscript.pid; exit" SIGQUIT
+trap "echo 'Y U no love me?!'" SIGINT
+while true
+do
+	echo "To infinity and beyond"
+	sleep 2
+done
