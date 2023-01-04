@@ -2,8 +2,29 @@
 #configures a new Ubuntu machine to respect above requirements
 #(this script will be run on the server itself)
 
-sudo apt-get -y update
-sudo apt upgrade -y
-sudo apt-get -y install nginx
-sudo service nginx start
-echo "Hello World!" | tee /var/www/html/index.nginx-debian.html
+sudo apt -y update
+sudo apt -y install nginx
+
+rm -rf school
+mkdir school
+touch school/index.html
+echo "Hello World!" > school/index.html
+sudo rm -rf /var/www/school
+sudo mv school /var/www/
+
+touch default
+printf %s "server {
+       listen 80;
+       listen [::]:80;
+
+       root /var/www/school;
+       index index.html;
+}
+" > default
+
+sudo rm -rf /etc/nginx/sites-available/default
+sudo rm -rf /etc/nginx/sites-enabled/default
+sudo mv default /etc/nginx/sites-available/
+sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
+sudo service nginx restart
