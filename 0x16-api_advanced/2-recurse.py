@@ -15,7 +15,7 @@ def recurse(subreddit, hot_list=[]):
     but it must be able to be called with just a subreddit
     If not a valid subreddit, return None.'''
     global after
-    headers = {'User-Agent': 'xica369'}
+    headers = {'User-Agent': 'Mozilla/5.0'}
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
     parameters = {'after': after}
     response = requests.get(url, headers=headers, allow_redirects=False,
