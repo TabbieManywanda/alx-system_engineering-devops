@@ -10,25 +10,32 @@ import requests
 import sys
 
 
+def add_title(hot_list, hot_posts):
+    '''add items'''
+    if len(hot_posts) == 0:
+        return
+    hot_list.append(hot_posts[0]['data']['title'])
+    hot_posts.pop(0)
+    add_title(hot_list, hot_posts)
+
+
 def recurse(subreddit, hot_list=[]):
     '''You may change the prototype,
     but it must be able to be called with just a subreddit
     If not a valid subreddit, return None.'''
-    global after
     headers = {'User-Agent': 'Mozilla/5.0'}
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
     parameters = {'after': after}
     response = requests.get(url, headers=headers, allow_redirects=False,
                             params=parameters)
 
-    if response.status_code == 200:
-        next_ = response.json().get('data').get('after')
-        if next_ is not None:
-            after = next_
-            recurse(subreddit, hot_list)
-        list_titles = response.json().get('data').get('children')
-        for title_ in list_titles:
-            hot_list.append(title_.get('data').get('title'))
-        return hot_list
-    else:
+    if response.status_code != 200:
         return None
+
+    dic = response.json()
+    hot_posts = dic['data']['children']
+    add_title(hot_list, hot_posts)
+    after = dic['data']['after']
+    if not after:
+        return hot_list
+    return recurse(subreddit, hot_list=hot_list, after=after)
