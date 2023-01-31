@@ -19,7 +19,7 @@ def add_title(hot_list, hot_posts):
     add_title(hot_list, hot_posts)
 
 
-def recurse(subreddit, hot_list=[]):
+def recurse(subreddit, hot_list=[], after=None):
     '''You may change the prototype,
     but it must be able to be called with just a subreddit
     If not a valid subreddit, return None.'''
