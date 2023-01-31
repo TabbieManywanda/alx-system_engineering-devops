@@ -7,6 +7,7 @@ Javascript should count as javascript, but java should not)
 '''
 
 import requests
+import sys
 
 
 def count_words(subreddit, word_list, instances={}, after="", count=0):
